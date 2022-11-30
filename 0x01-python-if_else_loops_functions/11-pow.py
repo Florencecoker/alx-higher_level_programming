@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# 11-pow.py 
+#!/usr/bin/python3
+# Author -Coker Florence
 
 def pow(a, b):
-
-    """Return a to the power of b."""
-
     return (a ** b)
