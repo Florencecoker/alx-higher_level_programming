@@ -1,21 +1,14 @@
-./100-starwars_characters.js 3
-Darth Vader
-R2-D2
-Luke Skywalker
-Han Solo
-Leia Organa
-Chewbacca
-Palpatine
-Obi-Wan Kenobi
-Jabba Desilijic Tiure
-Wedge Antilles
-Yoda
-Boba Fett
-Ackbar
-Arvel Crynyd
-Mon Mothma
-Nien Nunb
-Wicket Systri Warrick
-Bib Fortuna
-C-3PO
-Lando Calrissian
+#!/usr/bin/node
+
+const request = require('request');
+const starWarsUri = 'https://swapi-api.hbtn.io/api/films/'.concat(process.argv[2]);
+
+request(starWarsUri, function (_err, _res, body) {
+  const characters = JSON.parse(body).characters;
+
+  for (let i = 0; i < characters.length; ++i) {
+    request(characters[i], function (_cErr, _cRes, cBody) {
+      console.log(JSON.parse(cBody).name);
+    });
+  }
+});
